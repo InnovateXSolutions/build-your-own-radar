@@ -19,7 +19,7 @@
   }
 
   // ==========================================
-  // PDF Cover Page - Full bleed
+  // PDF Cover Page - Full bleed matching template
   // ==========================================
   #pdf-cover-page {
     page-break-after: always;
@@ -40,32 +40,46 @@
       z-index: 0;
     }
 
-    .pdf-title {
+    .pdf-cover-logo {
       position: absolute;
-      top: 40%;
+      top: 8%;
       left: 0;
       right: 0;
-      font-family: 'Bitter', serif;
-      font-size: 3.5rem;
-      font-weight: bold;
-      color: $flamingo;
+      text-align: center;
+      z-index: 1;
+
+      img {
+        height: 100px;
+        width: auto;
+        filter: brightness(0) invert(1);
+      }
+    }
+
+    .pdf-cover-content {
+      position: absolute;
+      top: 38%;
+      left: 0;
+      right: 0;
       text-align: center;
       z-index: 1;
     }
 
+    .pdf-title {
+      font-family: 'Bitter', serif;
+      font-size: 3.5rem;
+      font-weight: bold;
+      color: $flamingo;
+      margin: 0 0 1rem 0;
+    }
+
     .pdf-subtitle {
-      position: absolute;
-      top: calc(40% + 5rem);
-      left: 0;
-      right: 0;
       font-family: 'Inter', sans-serif;
-      font-size: 1.5rem;
+      font-size: 1.25rem;
       font-weight: 600;
       color: $white;
-      text-align: center;
       text-transform: uppercase;
-      letter-spacing: 0.2em;
-      z-index: 1;
+      letter-spacing: 0.3em;
+      margin: 0;
     }
 
     .pdf-date {
@@ -78,6 +92,7 @@
       color: $flamingo;
       text-align: center;
       z-index: 1;
+      margin: 0;
     }
   }
 
@@ -189,6 +204,7 @@
         list-style: none;
 
         li {
+          display: flex;
           font-size: 0.9rem;
           line-height: 1.5;
           color: $grey-text;
@@ -206,21 +222,32 @@
 
           strong {
             color: $wave;
+            flex-shrink: 0;
           }
         }
       }
 
-      .pdf-quadrant-list li strong {
-        &:first-child {
+      .pdf-quadrant-list li {
+        strong {
           display: inline-block;
-          min-width: 180px;
+          min-width: 160px;
         }
       }
 
-      .pdf-ring-list li strong {
-        display: inline-block;
-        min-width: 80px;
-        color: $flamingo;
+      .pdf-ring-list li {
+        strong {
+          display: inline-block;
+          min-width: 70px;
+          color: $flamingo;
+        }
+      }
+
+      .pdf-status-list li {
+        strong {
+          display: inline-block;
+          min-width: 90px;
+          color: $flamingo;
+        }
       }
     }
   }
@@ -264,19 +291,48 @@
   }
 
   // ==========================================
-  // Index Page - All Items
+  // Index Page - Radar at a Glance
   // ==========================================
   #pdf-index-page {
+    padding: 10mm 15mm;
+
+    .pdf-page-title {
+      margin-bottom: 1rem;
+    }
+
+    .pdf-radar-snapshot {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      page-break-inside: avoid;
+      page-break-after: always;
+
+      .pdf-radar-clone {
+        max-width: 170mm;
+        height: auto;
+
+        .quadrant-group {
+          opacity: 1 !important;
+          transform: scale(1) translate(0, 0) !important;
+        }
+
+        .blip-link {
+          opacity: 1 !important;
+        }
+      }
+    }
+
     .pdf-index-content {
-      columns: 2;
-      column-gap: 2rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto auto;
+      gap: 1.5rem 2rem;
 
       .pdf-index-quadrant {
-        break-inside: avoid;
-        margin-bottom: 1.5rem;
+        page-break-inside: avoid;
 
         h3 {
-          font-size: 1rem;
+          font-size: 0.95rem;
           font-weight: 600;
           margin-bottom: 0.5rem;
           padding-bottom: 0.25rem;
@@ -289,13 +345,13 @@
         }
 
         .pdf-index-ring {
-          margin-bottom: 0.75rem;
+          margin-bottom: 0.5rem;
 
           h4 {
-            font-size: 0.85rem;
-            font-weight: 600;
+            font-size: 0.75rem;
+            font-weight: 700;
             color: $wave;
-            margin-bottom: 0.25rem;
+            margin-bottom: 0.15rem;
           }
 
           ul {
@@ -304,24 +360,14 @@
             margin: 0;
 
             li {
-              font-size: 0.8rem;
-              line-height: 1.4;
+              font-size: 0.7rem;
+              line-height: 1.3;
               color: $grey-text;
-              padding: 0.1rem 0;
+              padding: 0.05rem 0;
 
               a {
                 color: $grey-text;
                 text-decoration: none;
-
-                &:hover {
-                  color: $wave;
-                }
-              }
-
-              .index-item-status {
-                font-size: 0.7rem;
-                color: $mist-s30;
-                margin-left: 0.25rem;
               }
             }
           }
@@ -430,24 +476,9 @@
       content: none;
     }
 
-    // Radar SVG visualization
+    // Hide original radar-plot since we clone it into pdf-index-page
     #radar-plot {
-      display: block !important;
-      width: 100% !important;
-      max-width: 180mm !important;
-      height: auto !important;
-      margin: 0 auto 2rem !important;
-      page-break-after: always;
-
-      .quadrant-group {
-        display: block !important;
-        opacity: 1 !important;
-        transform: scale(1) translate(0, 0) !important;
-      }
-
-      .blip-link {
-        opacity: 1 !important;
-      }
+      display: none !important;
     }
   }
 
@@ -503,11 +534,15 @@
 
       .blip-list__item {
         pointer-events: none;
+        page-break-inside: avoid;
+        break-inside: avoid;
       }
 
       .blip-list__item-container {
         background-color: white !important;
         margin-bottom: 1rem;
+        page-break-inside: avoid;
+        break-inside: avoid;
 
         &__name {
           border-bottom: none;

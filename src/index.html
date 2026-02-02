@@ -27,36 +27,35 @@
       <!-- PDF Cover Page -->
       <div id="pdf-cover-page">
         <img class="pdf-banner-image" src="/images/pdf-banner.png" alt="Pdf cover image" />
-        <h1 class="pdf-title">Technology Radar</h1>
-        <p class="pdf-subtitle"></p>
+        <div class="pdf-cover-logo">
+          <img src="/images/innov8x-logo.svg" alt="InnovateX Solutions" />
+        </div>
+        <div class="pdf-cover-content">
+          <h1 class="pdf-title">Technology Radar</h1>
+          <p class="pdf-subtitle"></p>
+        </div>
         <p class="pdf-date"></p>
       </div>
 
       <!-- PDF Table of Contents -->
       <div id="pdf-toc-page" class="pdf-page">
-        <div class="pdf-section-header">
-          <img src="/images/banner-desktop.png" alt="Section header" class="pdf-section-header-image" />
-        </div>
         <h2 class="pdf-page-title">Contents</h2>
         <div class="pdf-toc-content">
           <ul class="pdf-toc-list">
-            <li><span class="toc-item">About the Radar</span><span class="toc-page">3</span></li>
-            <li><span class="toc-item">How to Use the Radar</span><span class="toc-page">4</span></li>
-            <li><span class="toc-item">Themes</span><span class="toc-page">5</span></li>
-            <li><span class="toc-item">The Radar</span><span class="toc-page">6</span></li>
-            <li><span class="toc-item">Techniques</span><span class="toc-page">7</span></li>
-            <li><span class="toc-item">Platforms</span><span class="toc-page">8</span></li>
-            <li><span class="toc-item">Tools</span><span class="toc-page">9</span></li>
-            <li><span class="toc-item">Languages &amp; Frameworks</span><span class="toc-page">10</span></li>
+            <li><span class="toc-item">About the Radar</span></li>
+            <li><span class="toc-item">How to Use the Radar</span></li>
+            <li><span class="toc-item">Themes</span></li>
+            <li><span class="toc-item">Radar at a Glance</span></li>
+            <li><span class="toc-item">Techniques</span></li>
+            <li><span class="toc-item">Platforms</span></li>
+            <li><span class="toc-item">Tools</span></li>
+            <li><span class="toc-item">Languages &amp; Frameworks</span></li>
           </ul>
         </div>
       </div>
 
       <!-- PDF About the Radar Page -->
       <div id="pdf-about-page" class="pdf-page">
-        <div class="pdf-section-header">
-          <img src="/images/banner-desktop.png" alt="Section header" class="pdf-section-header-image" />
-        </div>
         <h2 class="pdf-page-title">About the Radar</h2>
         <div class="pdf-about-content">
           <!-- Content populated from about.csv -->
@@ -65,9 +64,6 @@
 
       <!-- PDF How to Use Page -->
       <div id="pdf-how-to-use-page" class="pdf-page">
-        <div class="pdf-section-header">
-          <img src="/images/banner-desktop.png" alt="Section header" class="pdf-section-header-image" />
-        </div>
         <h2 class="pdf-page-title">How to Use the Radar</h2>
         <div class="pdf-how-to-use-content">
           <div class="pdf-quadrants-intro">
@@ -105,9 +101,6 @@
 
       <!-- PDF Themes Page -->
       <div id="pdf-themes-page" class="pdf-page">
-        <div class="pdf-section-header">
-          <img src="/images/banner-desktop.png" alt="Section header" class="pdf-section-header-image" />
-        </div>
         <h2 class="pdf-page-title">Themes</h2>
         <p class="pdf-themes-intro">For each edition of the Technology Radar, we look for patterns emerging from the technologies we discuss. These patterns form the themes that represent the most significant trends we're observing.</p>
         <div class="pdf-themes-content">
@@ -115,14 +108,14 @@
         </div>
       </div>
 
-      <!-- PDF Radar Visualization Page -->
-      <div id="pdf-radar-page" class="pdf-page">
-        <div class="pdf-section-header">
-          <img src="/images/banner-desktop.png" alt="Section header" class="pdf-section-header-image" />
-        </div>
-        <h2 class="pdf-page-title">The Radar</h2>
-        <div class="pdf-radar-visualization">
+      <!-- PDF Index Page - Radar at a Glance -->
+      <div id="pdf-index-page" class="pdf-page">
+        <h2 class="pdf-page-title">Radar at a Glance</h2>
+        <div class="pdf-radar-snapshot">
           <!-- Radar SVG will be cloned here for PDF -->
+        </div>
+        <div class="pdf-index-content">
+          <!-- Content populated dynamically from blips -->
         </div>
       </div>
 
@@ -171,7 +164,7 @@
     </main>
     <footer class="home-page">
       <!-- PDF Back Cover -->
-      <div id="pdf-back-cover" class="pdf-page">
+      <div id="pdf-back-cover">
         <div class="pdf-back-cover-content">
           <img class="pdf-back-cover-logo" src="/images/innov8x-logo.svg" alt="InnovateX Solutions logo" />
           <h2>Powered by InnovateX Solutions</h2>
@@ -192,11 +185,5 @@
         self-hosting. Originally based on <a href="https://github.com/thoughtworks/build-your-own-radar">Thoughtworks' Build Your Own Radar</a>.
       </p>
     </footer>
-    <div class="pdf-page-footer">
-      <div class="footer-left">innovatexsolutions.com.au</div>
-      <div class="footer-right">
-        Technology Radar | <span class="footer-date"></span>
-      </div>
-    </div>
   </body>
 </html>

@@ -27,7 +27,38 @@ const addQuadrantNameInPdfView = (order, quadrantName) => {
     .text(quadrantName)
 }
 
+const cloneRadarForPdf = () => {
+  const radarPlot = document.querySelector('#radar-plot')
+  const pdfRadarContainer = document.querySelector('#pdf-index-page .pdf-radar-snapshot')
+
+  if (radarPlot && pdfRadarContainer) {
+    // Clone the radar SVG
+    const radarClone = radarPlot.cloneNode(true)
+    radarClone.removeAttribute('id')
+    radarClone.setAttribute('class', 'pdf-radar-clone')
+
+    // Reset all quadrant transforms to show full radar
+    const quadrantGroups = radarClone.querySelectorAll('.quadrant-group')
+    quadrantGroups.forEach(group => {
+      group.style.opacity = '1'
+      group.style.transform = 'scale(1) translate(0, 0)'
+    })
+
+    // Make all blips visible
+    const blipLinks = radarClone.querySelectorAll('.blip-link')
+    blipLinks.forEach(blip => {
+      blip.style.opacity = '1'
+    })
+
+    pdfRadarContainer.innerHTML = ''
+    pdfRadarContainer.appendChild(radarClone)
+  }
+}
+
 const generatePdfIndexPage = () => {
+  // First clone the radar visualization
+  cloneRadarForPdf()
+
   const indexContainer = d3.select('#pdf-index-page .pdf-index-content')
   indexContainer.html('')
 

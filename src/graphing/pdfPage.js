@@ -41,7 +41,10 @@ const cloneRadarForPdf = () => {
     const quadrantGroups = radarClone.querySelectorAll('.quadrant-group')
     quadrantGroups.forEach(group => {
       group.style.opacity = '1'
-      group.style.transform = 'scale(1) translate(0, 0)'
+      group.style.transform = ''
+      group.removeAttribute('transform')
+      // Remove any inline style transforms
+      group.style.cssText = 'opacity: 1 !important;'
     })
 
     // Make all blips visible
@@ -49,6 +52,13 @@ const cloneRadarForPdf = () => {
     blipLinks.forEach(blip => {
       blip.style.opacity = '1'
     })
+
+    // Ensure SVG has proper dimensions for print
+    const width = radarClone.getAttribute('width') || radarClone.viewBox?.baseVal?.width || 800
+    const height = radarClone.getAttribute('height') || radarClone.viewBox?.baseVal?.height || 800
+    radarClone.style.width = '100%'
+    radarClone.style.height = 'auto'
+    radarClone.style.maxWidth = '500px'
 
     pdfRadarContainer.innerHTML = ''
     pdfRadarContainer.appendChild(radarClone)

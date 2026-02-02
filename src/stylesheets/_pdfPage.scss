@@ -315,21 +315,28 @@
     .pdf-radar-snapshot {
       display: flex;
       justify-content: center;
+      align-items: center;
       margin-bottom: 1.5rem;
       page-break-inside: avoid;
       page-break-after: always;
+      min-height: 400px;
 
       .pdf-radar-clone {
-        max-width: 170mm;
-        height: auto;
+        width: 100% !important;
+        max-width: 500px !important;
+        height: auto !important;
 
         .quadrant-group {
           opacity: 1 !important;
-          transform: scale(1) translate(0, 0) !important;
+          transform: none !important;
         }
 
         .blip-link {
           opacity: 1 !important;
+        }
+
+        text {
+          fill: currentColor;
         }
       }
     }

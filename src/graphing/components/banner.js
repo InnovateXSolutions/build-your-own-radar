@@ -1,7 +1,7 @@
 const d3 = require('d3')
 
 const config = require('../../config')
-const { addPdfCoverTitle } = require('../pdfPage')
+const { addPdfCoverTitle, initializePdfContent } = require('../pdfPage')
 const featureToggles = config().featureToggles
 
 function renderBanner(renderFullRadar) {
@@ -13,6 +13,7 @@ function renderBanner(renderFullRadar) {
     d3.select('.hero-banner__title-text').on('click', renderFullRadar)
 
     addPdfCoverTitle(documentTitle)
+    initializePdfContent()
   } else {
     const header = d3.select('body').insert('header', '#radar')
     header

@@ -1,102 +1,335 @@
 @import 'colors';
 
+// PDF Print Styles
 @media print {
   body {
     margin: 0;
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
+    font-family: 'Inter', sans-serif;
   }
 
   @page {
-    margin: 20mm;
+    margin: 15mm;
+    size: A4;
   }
 
+  // ==========================================
+  // PDF Cover Page
+  // ==========================================
   #pdf-cover-page {
+    page-break-after: always;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
     .pdf-banner-image {
       width: 100%;
-      height: 50%;
+      height: auto;
+      max-height: 100vh;
+      object-fit: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: -1;
     }
 
     .pdf-title {
       font-family: 'Bitter', serif;
-      font-size: 4rem;
-      margin: 24mm 12mm;
+      font-size: 3.5rem;
       font-weight: bold;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      display: -webkit-box;
-      display: -webkit-inline-box;
-      line-height: 4.25rem;
-      -webkit-line-clamp: 3;
-      -webkit-box-orient: vertical;
-      min-height: 200px;
-      width: calc(100% - 24mm);
-    }
-  }
-  .pdf-powered-by-text {
-    float: right;
-    margin-right: 12mm;
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-
-    .pdf-tw-logo {
-      height: 48px;
-    }
-  }
-
-  footer.home-page {
-    a {
-      color: black;
+      color: $flamingo;
+      margin: auto;
+      margin-top: 35vh;
+      text-align: center;
     }
 
-    p {
-      margin: 0;
-      font-style: italic;
-      max-width: none;
+    .pdf-subtitle {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: $white;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      margin-top: 1rem;
+    }
 
-      &.agree-terms {
-        a:after {
-          content: ' <' attr(href) '> ';
-          font-weight: normal;
-          color: black;
-        }
-      }
+    .pdf-date {
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      color: $flamingo;
+      text-align: center;
+      margin-top: auto;
+      margin-bottom: 3rem;
     }
   }
 
-  .pdf-footer {
+  // ==========================================
+  // PDF Page Common Styles
+  // ==========================================
+  .pdf-page {
     page-break-before: always;
+    page-break-after: always;
+    min-height: calc(100vh - 30mm);
+  }
 
-    .pdf-powered-by-text {
-      flex-direction: column;
-      align-items: flex-start;
-      float: left;
+  .pdf-section-header {
+    width: calc(100% + 30mm);
+    margin-left: -15mm;
+    margin-top: -15mm;
+    margin-bottom: 2rem;
+    height: 80px;
+    overflow: hidden;
+
+    .pdf-section-header-image {
       width: 100%;
-      margin-bottom: 1.5rem;
-      gap: 0;
+      height: 80px;
+      object-fit: cover;
+      object-position: right;
+    }
+  }
 
-      .pdf-tw-logo {
-        margin: 2rem 0;
-      }
+  .pdf-page-title {
+    font-family: 'Bitter', serif;
+    font-size: 2rem;
+    font-weight: bold;
+    color: $wave;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 3px solid $flamingo;
+  }
 
-      .pdf-footer-title {
-        font-weight: bold;
-        font-size: 1.5rem;
-      }
+  // ==========================================
+  // Table of Contents
+  // ==========================================
+  #pdf-toc-page {
+    .pdf-toc-list {
+      list-style: none;
+      padding: 0;
+      margin: 2rem 0;
 
-      a {
-        color: black;
-        font-size: 1.25rem;
+      li {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        padding: 0.75rem 0;
+        border-bottom: 1px dotted $mist-s30;
+        font-size: 1.1rem;
 
-        &.radar-link {
-          font-style: italic;
-          margin-top: 0.5rem;
+        .toc-item {
+          font-weight: 500;
+        }
+
+        .toc-page {
+          font-weight: 600;
+          color: $wave;
         }
       }
     }
   }
 
+  // ==========================================
+  // About the Radar Page
+  // ==========================================
+  #pdf-about-page {
+    .pdf-about-content {
+      .pdf-about-section {
+        margin-bottom: 1.5rem;
+
+        .pdf-about-section-title {
+          font-size: 1.1rem;
+          font-weight: 600;
+          color: $wave;
+          margin-bottom: 0.5rem;
+        }
+
+        .pdf-about-section-content {
+          font-size: 0.95rem;
+          line-height: 1.6;
+          color: $grey-text;
+          margin: 0;
+        }
+      }
+    }
+  }
+
+  // ==========================================
+  // How to Use Page
+  // ==========================================
+  #pdf-how-to-use-page {
+    .pdf-how-to-use-content {
+      h3 {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: $wave;
+        margin-top: 1.5rem;
+        margin-bottom: 0.75rem;
+
+        &:first-child {
+          margin-top: 0;
+        }
+      }
+
+      p {
+        font-size: 0.95rem;
+        line-height: 1.5;
+        color: $grey-text;
+        margin-bottom: 0.75rem;
+      }
+
+      ul {
+        margin: 0;
+        padding-left: 0;
+        list-style: none;
+
+        li {
+          font-size: 0.9rem;
+          line-height: 1.5;
+          color: $grey-text;
+          margin-bottom: 0.75rem;
+          padding-left: 1rem;
+          position: relative;
+
+          &::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: $flamingo;
+            font-weight: bold;
+          }
+
+          strong {
+            color: $wave;
+          }
+        }
+      }
+
+      .pdf-quadrant-list li strong {
+        &:first-child {
+          display: inline-block;
+          min-width: 180px;
+        }
+      }
+
+      .pdf-ring-list li strong {
+        display: inline-block;
+        min-width: 80px;
+        color: $flamingo;
+      }
+    }
+  }
+
+  // ==========================================
+  // Themes Page
+  // ==========================================
+  #pdf-themes-page {
+    .pdf-themes-intro {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: $grey-text;
+      margin-bottom: 1.5rem;
+    }
+
+    .pdf-themes-content {
+      .pdf-theme-item {
+        margin-bottom: 1.5rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid $mist;
+
+        &:last-child {
+          border-bottom: none;
+        }
+
+        .pdf-theme-title {
+          font-size: 1.1rem;
+          font-weight: 600;
+          color: $wave;
+          margin-bottom: 0.5rem;
+        }
+
+        .pdf-theme-description {
+          font-size: 0.9rem;
+          line-height: 1.6;
+          color: $grey-text;
+          margin: 0;
+        }
+      }
+    }
+  }
+
+  // ==========================================
+  // Radar Visualization Page
+  // ==========================================
+  #pdf-radar-page {
+    .pdf-radar-visualization {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 400px;
+    }
+  }
+
+  // ==========================================
+  // Back Cover
+  // ==========================================
+  #pdf-back-cover {
+    page-break-before: always;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 30mm);
+    text-align: center;
+    background-color: $wave;
+    color: $white;
+    margin: -15mm;
+    padding: 15mm;
+
+    .pdf-back-cover-content {
+      max-width: 400px;
+
+      .pdf-back-cover-logo {
+        height: 80px;
+        margin-bottom: 2rem;
+        filter: brightness(0) invert(1);
+      }
+
+      h2 {
+        font-family: 'Bitter', serif;
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin-bottom: 1rem;
+      }
+
+      .pdf-back-cover-link {
+        margin-bottom: 3rem;
+
+        a {
+          color: $flamingo;
+          font-size: 1.1rem;
+          text-decoration: none;
+        }
+      }
+
+      .pdf-back-cover-attribution {
+        font-size: 0.85rem;
+        opacity: 0.8;
+        line-height: 1.6;
+
+        a {
+          color: $flamingo;
+        }
+      }
+    }
+  }
+
+  // ==========================================
+  // Quadrant Tables (existing styles enhanced)
+  // ==========================================
   #radar {
     display: block !important;
     height: max-content !important;
@@ -110,13 +343,14 @@
     }
 
     a {
-      color: black;
+      color: $wave;
     }
 
     a:after {
       content: ' <' attr(href) '> ';
       font-weight: normal;
-      color: black;
+      color: $mist-s30;
+      font-size: 0.8em;
     }
   }
 
@@ -132,32 +366,54 @@
       position: static !important;
       margin-bottom: 20px;
 
+      &::before {
+        content: '';
+        display: block;
+        width: calc(100% + 30mm);
+        height: 80px;
+        margin-left: -15mm;
+        margin-top: -15mm;
+        margin-bottom: 2rem;
+        background-image: url('/images/banner-desktop.png');
+        background-size: cover;
+        background-position: right;
+      }
+
       &__name {
         font-size: 2rem;
         font-weight: bold;
         font-family: 'Bitter', serif;
-        margin-bottom: 2.5rem;
+        margin-bottom: 1.5rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 3px solid;
         display: block !important;
       }
 
       &__ring-name {
-        margin-bottom: 2rem;
+        margin-bottom: 1.5rem;
+        font-weight: 600;
+        font-size: 1.1rem;
+        color: $wave;
       }
 
       &.first .quadrant-table__name {
         color: $sapphire;
+        border-color: $sapphire;
       }
 
       &.second .quadrant-table__name {
         color: $turmeric;
+        border-color: $turmeric;
       }
 
       &.third .quadrant-table__name {
         color: $jade;
+        border-color: $jade;
       }
 
       &.fourth .quadrant-table__name {
         color: $flamingo;
+        border-color: $flamingo;
       }
 
       .blip-list__item {
@@ -166,6 +422,7 @@
 
       .blip-list__item-container {
         background-color: white !important;
+        margin-bottom: 1rem;
 
         &__name {
           border-bottom: none;
@@ -173,7 +430,8 @@
 
           &-value {
             font-weight: bold;
-            font-size: 1.25rem;
+            font-size: 1.1rem;
+            color: $wave;
           }
 
           &-arrow {
@@ -183,17 +441,21 @@
 
         &__description {
           display: block;
+          font-size: 0.9rem;
+          line-height: 1.6;
+          color: $grey-text;
+          margin-top: 0.5rem;
         }
       }
 
       ul.blip-list {
         list-style: none;
-        margin: 0 0 3rem;
+        margin: 0 0 2rem;
         padding: 0;
 
         .blip-list__item-container__description {
           padding-left: 0;
-          line-height: 1.5 !important;
+          line-height: 1.6 !important;
         }
       }
 
@@ -203,52 +465,53 @@
     }
   }
 
+  // ==========================================
+  // Page Footer
+  // ==========================================
   .pdf-page-footer {
-    display: none;
+    display: flex;
     position: fixed;
     bottom: 0;
+    left: 0;
+    right: 0;
     color: $mist-s30;
     justify-content: space-between;
-    width: 98%;
+    font-size: 0.8rem;
+    padding: 0 15mm;
   }
 
+  // ==========================================
+  // Hide screen-only elements
+  // ==========================================
   .input-sheet__logo,
   .hero-banner,
-  main > *:not(#pdf-cover-page, #radar),
+  .helper-description,
+  .error-container,
+  .input-sheet-form,
+  .graph-header,
+  .graph-footer,
+  .all-quadrants-mobile,
   #radar > #radar-plot,
   .radar-legends,
   .ui-helper-hidden-accessible,
-  #onetrust-consent-sdk {
+  #onetrust-consent-sdk,
+  footer.home-page > p.agree-terms {
     display: none !important;
   }
 }
 
-@media print and (orientation: landscape) {
-  #pdf-cover-page {
-    .pdf-banner-image {
-      height: 310px;
-      object-fit: cover;
-    }
-
-    .pdf-title {
-      margin: 12mm 24mm 10mm;
-      width: calc(100% - 48mm);
-    }
-  }
-}
-
-@media print and (orientation: portrait) {
-  #pdf-cover-page {
-    .pdf-banner-image {
-      height: 50%;
-    }
-  }
-}
-
+// ==========================================
+// Screen Styles - Hide PDF elements
+// ==========================================
 @media screen {
-  .pdf-footer,
-  .pdf-page-footer,
-  #pdf-cover-page {
+  #pdf-cover-page,
+  #pdf-toc-page,
+  #pdf-about-page,
+  #pdf-how-to-use-page,
+  #pdf-themes-page,
+  #pdf-radar-page,
+  #pdf-back-cover,
+  .pdf-page-footer {
     display: none !important;
   }
 }

@@ -24,16 +24,109 @@
       </div>
     </div>
     <main>
+      <!-- PDF Cover Page -->
       <div id="pdf-cover-page">
-        <img class="pdf-banner-image" src="/images/pdf-banner.png" alt="Pdf cover image" width="100%" height="300px" />
-        <h1 class="pdf-title"></h1>
-        <div class="pdf-powered-by-text">
-          <span>Powered by</span>
-          <a href="https://innovatexsolutions.com.au">
-            <img class="pdf-tw-logo" src="/images/innov8x-logo.svg" alt="logo" />
-          </a>
+        <img class="pdf-banner-image" src="/images/pdf-banner.png" alt="Pdf cover image" />
+        <h1 class="pdf-title">Technology Radar</h1>
+        <p class="pdf-subtitle"></p>
+        <p class="pdf-date"></p>
+      </div>
+
+      <!-- PDF Table of Contents -->
+      <div id="pdf-toc-page" class="pdf-page">
+        <div class="pdf-section-header">
+          <img src="/images/banner-desktop.png" alt="Section header" class="pdf-section-header-image" />
+        </div>
+        <h2 class="pdf-page-title">Contents</h2>
+        <div class="pdf-toc-content">
+          <ul class="pdf-toc-list">
+            <li><span class="toc-item">About the Radar</span><span class="toc-page">3</span></li>
+            <li><span class="toc-item">How to Use the Radar</span><span class="toc-page">4</span></li>
+            <li><span class="toc-item">Themes</span><span class="toc-page">5</span></li>
+            <li><span class="toc-item">The Radar</span><span class="toc-page">6</span></li>
+            <li><span class="toc-item">Techniques</span><span class="toc-page">7</span></li>
+            <li><span class="toc-item">Platforms</span><span class="toc-page">8</span></li>
+            <li><span class="toc-item">Tools</span><span class="toc-page">9</span></li>
+            <li><span class="toc-item">Languages &amp; Frameworks</span><span class="toc-page">10</span></li>
+          </ul>
         </div>
       </div>
+
+      <!-- PDF About the Radar Page -->
+      <div id="pdf-about-page" class="pdf-page">
+        <div class="pdf-section-header">
+          <img src="/images/banner-desktop.png" alt="Section header" class="pdf-section-header-image" />
+        </div>
+        <h2 class="pdf-page-title">About the Radar</h2>
+        <div class="pdf-about-content">
+          <!-- Content populated from about.csv -->
+        </div>
+      </div>
+
+      <!-- PDF How to Use Page -->
+      <div id="pdf-how-to-use-page" class="pdf-page">
+        <div class="pdf-section-header">
+          <img src="/images/banner-desktop.png" alt="Section header" class="pdf-section-header-image" />
+        </div>
+        <h2 class="pdf-page-title">How to Use the Radar</h2>
+        <div class="pdf-how-to-use-content">
+          <div class="pdf-quadrants-intro">
+            <h3>Quadrants</h3>
+            <p>The radar is divided into four quadrants representing different categories of technology:</p>
+            <ul class="pdf-quadrant-list">
+              <li><strong>Techniques</strong> — These include elements of a software development process, such as experience design, and ways of structuring software.</li>
+              <li><strong>Platforms</strong> — Things that we build software on top of: cloud providers, operating systems, or generic kinds of platforms like serverless.</li>
+              <li><strong>Tools</strong> — Components such as databases, software development tools, and other supporting tools.</li>
+              <li><strong>Languages &amp; Frameworks</strong> — Programming languages like TypeScript and Python, and frameworks like React and FastAPI.</li>
+            </ul>
+          </div>
+          <div class="pdf-rings-intro">
+            <h3>Rings</h3>
+            <p>Each quadrant is divided into four rings, indicating what stage in adoption we believe the technology is at:</p>
+            <ul class="pdf-ring-list">
+              <li><strong>Adopt</strong> — Technologies we have high confidence in to serve our purpose. Technologies with a usage culture in production environments, low risk, and recommended to be widely used.</li>
+              <li><strong>Trial</strong> — Technologies that we have seen work with success in projects to solve real problems. First serious usage experience that confirms benefits and can uncover limitations. Trial technologies are slightly more risky.</li>
+              <li><strong>Assess</strong> — Technologies that are promising and have clear potential value. Worth exploring with the goal of understanding how it will affect your enterprise. Requires monitoring.</li>
+              <li><strong>Hold</strong> — Technologies not recommended to be used for new projects. Technologies that we think are not worth further investment. Don't start new projects with these and consider replacing in existing projects.</li>
+            </ul>
+          </div>
+          <div class="pdf-status-intro">
+            <h3>Status Indicators</h3>
+            <p>Items on the radar may have status indicators showing movement:</p>
+            <ul class="pdf-status-list">
+              <li><strong>New</strong> — First appearance on the radar this edition.</li>
+              <li><strong>Moved In</strong> — Technology has moved closer to the centre (e.g., from Trial to Adopt).</li>
+              <li><strong>Moved Out</strong> — Technology has moved away from the centre (e.g., from Trial to Hold).</li>
+              <li><strong>No Change</strong> — Position unchanged from previous edition.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- PDF Themes Page -->
+      <div id="pdf-themes-page" class="pdf-page">
+        <div class="pdf-section-header">
+          <img src="/images/banner-desktop.png" alt="Section header" class="pdf-section-header-image" />
+        </div>
+        <h2 class="pdf-page-title">Themes</h2>
+        <p class="pdf-themes-intro">For each edition of the Technology Radar, we look for patterns emerging from the technologies we discuss. These patterns form the themes that represent the most significant trends we're observing.</p>
+        <div class="pdf-themes-content">
+          <!-- Content populated from themes.csv -->
+        </div>
+      </div>
+
+      <!-- PDF Radar Visualization Page -->
+      <div id="pdf-radar-page" class="pdf-page">
+        <div class="pdf-section-header">
+          <img src="/images/banner-desktop.png" alt="Section header" class="pdf-section-header-image" />
+        </div>
+        <h2 class="pdf-page-title">The Radar</h2>
+        <div class="pdf-radar-visualization">
+          <!-- Radar SVG will be cloned here for PDF -->
+        </div>
+      </div>
+
+      <!-- Regular page content (hidden in PDF) -->
       <div class="helper-description home-page">
         <p>
           Once you've created your Radar you can use this service
@@ -77,16 +170,18 @@
       <div class="graph-footer"></div>
     </main>
     <footer class="home-page">
-      <div class="pdf-footer">
-        <div class="pdf-powered-by-text">
-          <span>Powered by</span>
-          <a href="https://innovatexsolutions.com.au">
-            <img class="pdf-tw-logo" src="/images/innov8x-logo.svg" alt="logo" />
-          </a>
-          <div class="pdf-footer-title">Technology Radar</div>
-          <a class="radar-link" id="generated-radar-link" href="https://innovatexsolutions.com.au">
-            innovatexsolutions.com.au
-          </a>
+      <!-- PDF Back Cover -->
+      <div id="pdf-back-cover" class="pdf-page">
+        <div class="pdf-back-cover-content">
+          <img class="pdf-back-cover-logo" src="/images/innov8x-logo.svg" alt="InnovateX Solutions logo" />
+          <h2>Powered by InnovateX Solutions</h2>
+          <p class="pdf-back-cover-link">
+            <a href="https://innovatexsolutions.com.au">innovatexsolutions.com.au</a>
+          </p>
+          <div class="pdf-back-cover-attribution">
+            <p>This Technology Radar is built using the open-source Build Your Own Radar project.</p>
+            <p>Originally based on <a href="https://github.com/thoughtworks/build-your-own-radar">Thoughtworks' Build Your Own Radar</a>.</p>
+          </div>
         </div>
       </div>
       <p class="agree-terms">
@@ -100,7 +195,7 @@
     <div class="pdf-page-footer">
       <div class="footer-left">innovatexsolutions.com.au</div>
       <div class="footer-right">
-        Build your own radar, <span class="footer-date">dd/mm/yyyy</span> | <span class="footer-page-number">00</span>
+        Technology Radar | <span class="footer-date"></span>
       </div>
     </div>
   </body>

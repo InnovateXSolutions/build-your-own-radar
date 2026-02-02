@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  innov8x-radar:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: innov8x-radar
+    ports:
+      - "8080:80"
+    environment:
+      - SERVER_NAMES=localhost 127.0.0.1
+      # Optional: Custom ring and quadrant names
+      # - RINGS=["Adopt", "Trial", "Assess", "Hold"]
+      # - QUADRANTS=["Techniques", "Platforms", "Tools", "Languages & Frameworks"]
+      # Optional: Google integration (for private sheets)
+      # - CLIENT_ID=your-google-client-id
+      # - API_KEY=your-google-api-key
+    volumes:
+      # Mount local data files (CSV/JSON)
+      - ./files:/opt/build-your-own-radar/files
+    restart: unless-stopped

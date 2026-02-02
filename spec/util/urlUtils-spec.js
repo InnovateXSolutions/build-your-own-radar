@@ -7,11 +7,11 @@ describe('Url Utils', () => {
     queryParams.mockReturnValue({ documentId: 'documentId' })
     delete window.location
     window.location = Object.create(window)
-    window.location.href = 'https://thoughtworks.com/radar?sheet=radar'
+    window.location.href = 'https://innovatexsolutions.com.au/radar?sheet=radar'
     window.location.search = '?'
     const sheetUrl = constructSheetUrl('radar')
 
-    expect(sheetUrl).toStrictEqual('https://thoughtworks.com/radar?documentId=documentId&sheetName=radar')
+    expect(sheetUrl).toStrictEqual('https://innovatexsolutions.com.au/radar?documentId=documentId&sheetName=radar')
     expect(queryParams).toHaveBeenCalledTimes(1)
   })
 
@@ -19,11 +19,11 @@ describe('Url Utils', () => {
     queryParams.mockReturnValue({ sheetId: 'sheetId' })
     delete window.location
     window.location = Object.create(window)
-    window.location.href = 'https://thoughtworks.com/radar?sheet=radar'
+    window.location.href = 'https://innovatexsolutions.com.au/radar?sheet=radar'
     window.location.search = '?'
     const sheetUrl = constructSheetUrl('radar')
 
-    expect(sheetUrl).toStrictEqual('https://thoughtworks.com/radar?sheetId=sheetId&sheetName=radar')
+    expect(sheetUrl).toStrictEqual('https://innovatexsolutions.com.au/radar?sheetId=sheetId&sheetName=radar')
     expect(queryParams).toHaveBeenCalledTimes(1)
   })
 
@@ -31,7 +31,7 @@ describe('Url Utils', () => {
     queryParams.mockReturnValue({ documentId: 'documentId', sheetId: 'sheetId' })
     delete window.location
     window.location = Object.create(window)
-    window.location.href = 'https://thoughtworks.com/radar?documentId=documentId&sheetId=sheetId'
+    window.location.href = 'https://innovatexsolutions.com.au/radar?documentId=documentId&sheetId=sheetId'
     window.location.search = '?'
 
     const id = getDocumentOrSheetId()
@@ -43,7 +43,7 @@ describe('Url Utils', () => {
     queryParams.mockReturnValue({ documentId: 'documentId' })
     delete window.location
     window.location = Object.create(window)
-    window.location.href = 'https://thoughtworks.com/radar?documentId=documentId'
+    window.location.href = 'https://innovatexsolutions.com.au/radar?documentId=documentId'
     window.location.search = '?'
 
     const id = getDocumentOrSheetId()
@@ -55,7 +55,7 @@ describe('Url Utils', () => {
     queryParams.mockReturnValue({ sheetId: 'sheetId' })
     delete window.location
     window.location = Object.create(window)
-    window.location.href = 'https://thoughtworks.com/radar?sheetId=sheetId'
+    window.location.href = 'https://innovatexsolutions.com.au/radar?sheetId=sheetId'
     window.location.search = '?'
 
     const id = getDocumentOrSheetId()
@@ -67,7 +67,7 @@ describe('Url Utils', () => {
     queryParams.mockReturnValue({ sheetName: 'sheetName' })
     delete window.location
     window.location = Object.create(window)
-    window.location.href = 'https://thoughtworks.com/radar?sheetName=sheetName'
+    window.location.href = 'https://innovatexsolutions.com.au/radar?sheetName=sheetName'
     window.location.search = '?'
 
     const sheetName = getSheetName()

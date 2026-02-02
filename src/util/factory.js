@@ -344,8 +344,8 @@ const Factory = function () {
         const content = d3.select('body').append('div').attr('class', 'input-sheet')
         plotLogo(content)
         const bannerText =
-          '<div><h1>Build your own radar</h1><p>Once you\'ve <a href ="https://www.thoughtworks.com/radar/byor">created your Radar</a>, you can use this service' +
-          ' to generate an <br />interactive version of your Technology Radar. Not sure how? <a href ="https://www.thoughtworks.com/radar/byor">Read this first.</a></p></div>'
+          '<div><h1>Build your own radar</h1><p>Once you\'ve created your Radar, you can use this service' +
+          ' to generate an <br />interactive version of your Technology Radar.</p></div>'
 
         plotBanner(content, bannerText)
 
@@ -362,7 +362,7 @@ const Factory = function () {
 }
 
 function setDocumentTitle() {
-  document.title = 'Build your own Radar'
+  document.title = 'Technology Radar'
 }
 
 function plotLoading(content) {
@@ -390,7 +390,7 @@ function plotLogo(content) {
   content
     .append('div')
     .attr('class', 'input-sheet__logo')
-    .html('<a href="https://www.thoughtworks.com"><img src="/images/tw-logo.png" alt="logo"/ ></a>')
+    .html('<a href="https://innovatexsolutions.com.au"><img src="/images/innov8x-logo.svg" alt="logo"/ ></a>')
 }
 
 function plotFooter(content) {
@@ -401,10 +401,10 @@ function plotFooter(content) {
     .attr('class', 'footer-content')
     .append('p')
     .html(
-      'Powered by <a href="https://www.thoughtworks.com"> Thoughtworks</a>. ' +
-        'By using this service you agree to <a href="https://www.thoughtworks.com/radar/tos">Thoughtworks\' terms of use</a>. ' +
-        'You also agree to our <a href="https://www.thoughtworks.com/privacy-policy">privacy policy</a>, which describes how we will gather, use and protect any personal data contained in your public Google Sheet. ' +
-        'This software is <a href="https://github.com/thoughtworks/build-your-own-radar">open source</a> and available for download and self-hosting.',
+      'Powered by <a href="https://innovatexsolutions.com.au">InnovateX Solutions</a>. ' +
+        'You also agree to our <a href="https://innovatexsolutions.com.au/privacy">privacy policy</a>, which describes how we will gather, use and protect any personal data contained in your public Google Sheet. ' +
+        'This software is <a href="https://github.com/InnovateXSolutions/build-your-own-radar">open source</a> and available for download and self-hosting. ' +
+        'Originally based on <a href="https://github.com/thoughtworks/build-your-own-radar">Thoughtworks\' Build Your Own Radar</a>.',
     )
 }
 
@@ -418,7 +418,7 @@ function plotForm(content) {
     .attr('class', 'input-sheet__form')
     .append('p')
     .html(
-      '<strong>Enter the URL of your <a href="https://www.thoughtworks.com/radar/byor" target="_blank">Google Sheet, CSV or JSON</a> file below…</strong>',
+      '<strong>Enter the URL of your Google Sheet, CSV or JSON file below…</strong>',
     )
 
   var form = content.select('.input-sheet__form').append('form').attr('method', 'get')
@@ -432,7 +432,7 @@ function plotForm(content) {
 
   form.append('button').attr('type', 'submit').append('a').attr('class', 'button').text('Build my radar')
 
-  form.append('p').html("<a href='https://www.thoughtworks.com/radar/byor#guide'>Need help?</a>")
+  form.append('p').html("<a href='https://github.com/InnovateXSolutions/build-your-own-radar#how-to-use'>Need help?</a>")
 }
 
 function plotErrorMessage(exception, fileType) {
@@ -445,8 +445,8 @@ function plotErrorMessage(exception, fileType) {
     plotLogo(content)
 
     const bannerText =
-      '<div><h1>Build your own radar</h1><p>Once you\'ve <a href ="https://www.thoughtworks.com/radar/byor">created your Radar</a>, you can use this service' +
-      ' to generate an <br />interactive version of your Technology Radar. Not sure how? <a href ="https://www.thoughtworks.com/radar/byor">Read this first.</a></p></div>'
+      '<div><h1>Build your own radar</h1><p>Once you\'ve created your Radar, you can use this service' +
+      ' to generate an <br />interactive version of your Technology Radar.</p></div>'
 
     plotBanner(content, bannerText)
 
@@ -459,12 +459,12 @@ function plotErrorMessage(exception, fileType) {
 
 function plotError(exception, fileType) {
   let message
-  let faqMessage = 'Please check <a href="https://www.thoughtworks.com/radar/byor">FAQs</a> for possible solutions.'
+  let faqMessage = 'Please check <a href="https://github.com/InnovateXSolutions/build-your-own-radar#how-to-use">the documentation</a> for possible solutions.'
   if (featureToggles.UIRefresh2022) {
     message = exception.message
     if (exception instanceof SheetNotFoundError) {
-      const href = 'https://www.thoughtworks.com/radar/byor'
-      faqMessage = `You can also check the <a href="${href}">FAQs</a> for other possible solutions`
+      const href = 'https://github.com/InnovateXSolutions/build-your-own-radar#how-to-use'
+      faqMessage = `You can also check the <a href="${href}">documentation</a> for other possible solutions`
     }
     if (exception instanceof InvalidConfigError) {
       faqMessage = ''

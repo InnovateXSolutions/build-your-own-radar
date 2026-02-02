@@ -15,10 +15,10 @@
     "lint-prettier:fix": "eslint . --fix && prettier --write .",
     "quality": "npm run lint-prettier:check && npm run test:coverage"
   },
-  "author": "Thoughtworks",
+  "author": "InnovateX Solutions",
   "repository": {
     "type": "git",
-    "url": "https://github.com/thoughtworks/build-your-own-radar"
+    "url": "https://github.com/InnovateXSolutions/build-your-own-radar"
   },
   "keywords": [
     "tech-radar"

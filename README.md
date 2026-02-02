@@ -1,16 +1,8 @@
-[![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/thoughtworks/build-your-own-radar?sort=semver)](https://github.com/thoughtworks/build-your-own-radar/releases/latest)
-[![Thoughtworks](https://circleci.com/gh/thoughtworks/build-your-own-radar.svg?style=shield)](https://circleci.com/gh/thoughtworks/build-your-own-radar)
-[![Stars](https://badgen.net/github/stars/thoughtworks/build-your-own-radar)](https://github.com/thoughtworks/build-your-own-radar)
-[![Docker Hub Pulls](https://img.shields.io/docker/pulls/wwwthoughtworks/build-your-own-radar.svg)](https://hub.docker.com/r/wwwthoughtworks/build-your-own-radar)
-[![GitHub contributors](https://badgen.net/github/contributors/thoughtworks/build-your-own-radar?color=cyan)](https://github.com/thoughtworks/build-your-own-radar/graphs/contributors)
-[![Prettier-Standard Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://github.com/sheerun/prettier-standard)
-[![AGPL License](https://badgen.net/github/license/thoughtworks/build-your-own-radar)](https://github.com/thoughtworks/build-your-own-radar)
+# Build Your Own Radar
 
-A library that generates an interactive radar, inspired by [thoughtworks.com/radar](http://thoughtworks.com/radar).
+A library that generates an interactive radar, originally inspired by [Thoughtworks' Tech Radar](http://thoughtworks.com/radar).
 
-## Demo
-
-You can see this in action at https://radar.thoughtworks.com. If you plug in [this data](https://docs.google.com/spreadsheets/d/1GBX3-jzlGkiKpYHF9RvVtu6GxSrco5OYTBv9YsOTXVg/edit#gid=0) you'll see [this visualization](https://radar.thoughtworks.com/?sheetId=https%3A%2F%2Fdocs.google.com%2Fspreadsheets%2Fd%2F1GBX3-jzlGkiKpYHF9RvVtu6GxSrco5OYTBv9YsOTXVg%2Fedit%23gid%3D0).
+This is a fork of [Thoughtworks' Build Your Own Radar](https://github.com/thoughtworks/build-your-own-radar), customized for InnovateX Solutions.
 
 ## How To Use
 
@@ -58,7 +50,7 @@ The input data format for the private sheet is the same as a public Google Sheet
 
 The other way to provide your data is using CSV document format.
 You can enter a publicly accessible URL (not behind any authentication) of a CSV file into the input field on the first page.
-For example, a [raw URL](https://raw.githubusercontent.com/thoughtworks/build-your-own-radar/master/spec/end_to_end_tests/resources/sheet.csv) for a CSV file hosted publicly on GitHub can be used.
+For example, a [raw URL](https://raw.githubusercontent.com/InnovateXSolutions/build-your-own-radar/master/spec/end_to_end_tests/resources/sheet.csv) for a CSV file hosted publicly on GitHub can be used.
 The format is just the same as that of the Google Sheet, the example is as follows:
 
 ```
@@ -77,7 +69,7 @@ If you do not want to host the CSV file publicly, you can follow [these steps](#
 
 Another other way to provide your data is using a JSON array.
 You can enter a publicly accessible URL (not behind any authentication) of a JSON file into the input field on the first page.
-For example, a [raw URL](https://raw.githubusercontent.com/thoughtworks/build-your-own-radar/master/spec/end_to_end_tests/resources/data.json) for a JSON file hosted publicly on GitHub can be used.
+For example, a [raw URL](https://raw.githubusercontent.com/InnovateXSolutions/build-your-own-radar/master/spec/end_to_end_tests/resources/data.json) for a JSON file hosted publicly on GitHub can be used.
 The format of the JSON is an array of objects with the the fields: `name`, `ring`, `quadrant`, `isNew`, and `description`.
 
 An example:
@@ -125,11 +117,6 @@ Paste the URL in the input field on the home page.
 
 That's it!
 
-**_Note:_** When using the BYOR app on [radar.thoughtworks.com](https://radar.thoughtworks.com), the ring and quadrant names should be among the values mentioned in the [example above](#setting-up-your-data). This holds good for Google Sheet, CSV or JSON inputs.
-For a self hosted BYOR app, there is no such condition on the names. Instructions to specify custom names are in the [next section](#more-complex-usage).
-
-Check [this page](https://www.thoughtworks.com/radar/byor) for step by step guidance.
-
 ### More complex usage
 
 To create the data representation, you can use the Google Sheet [factory](/src/util/factory.js) methods or CSV/JSON, or you can also insert all your data straight into the code.
@@ -144,7 +131,7 @@ Google OAuth Client ID and API Key can be obtained from your Google Developer Co
 export CLIENT_ID=[Google Client ID]
 ```
 
-**_Note:_** Make sure to set the "Authorized JavaScript origins" field for the Client ID to the right origin domain, with port, where the app is hosted. Examples: `http://localhost:8080` or `https://radar.thoughtworks.com`.
+**_Note:_** Make sure to set the "Authorized JavaScript origins" field for the Client ID to the right origin domain, with port, where the app is hosted. Examples: `http://localhost:8080` or `https://yourdomain.com`.
 
 Optionally, API Key can be set to bypass Google Authentication for public sheets.
 
@@ -173,7 +160,7 @@ export QUADRANTS='["Techniques", "Platforms", "Tools", "Languages & Frameworks"]
 
 ## Docker Image
 
-We have released BYOR as a docker image for our users. The image is available in our [DockerHub Repo](https://hub.docker.com/r/wwwthoughtworks/build-your-own-radar/). To pull and run the image, run the following commands.
+We have released BYOR as a docker image for our users. To pull and run the image, run the following commands.
 
 ```
 $ docker pull wwwthoughtworks/build-your-own-radar
@@ -184,7 +171,6 @@ $ open http://localhost:8080
 **_Notes:_**
 
 - The other environment variables mentioned in the previous section can be used with `docker run` as well.
-- Docker images for all the [releases](https://github.com/thoughtworks/build-your-own-radar/releases) are available with their respective tags (eg: `wwwthoughtworks/build-your-own-radar:v1.0.0`).
 
 ### Advanced option - Docker image with a CSV/JSON file from the host machine
 
@@ -220,7 +206,7 @@ All tasks are defined in `package.json`.
 Pull requests are welcome; please write tests whenever possible.
 Make sure you have nodejs installed. You can run `nvm use` to use the version used by this repo.
 
-- `git clone git@github.com:thoughtworks/build-your-own-radar.git`
+- `git clone git@github.com:InnovateXSolutions/build-your-own-radar.git`
 - `npm install`
 - `npm run quality` - to run the linter and the unit tests
 - `npm run dev` - to run application in localhost:8080. This will watch the .js and .css files and rebuild on file changes
@@ -250,3 +236,7 @@ To run End to End tests, start the dev server and follow the required steps belo
      $ docker run -p 8080:8080 -v $PWD:/app -w /app -it node:18 /bin/sh -c 'npm install && npm run dev'
 
 After building it will start on `localhost:8080`.
+
+## Attribution
+
+This project is a fork of [Thoughtworks' Build Your Own Radar](https://github.com/thoughtworks/build-your-own-radar), licensed under AGPL-3.0.

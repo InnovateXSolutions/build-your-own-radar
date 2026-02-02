@@ -1,4 +1,5 @@
 const { merge } = require('webpack-merge')
+const path = require('path')
 const webpack = require('webpack')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const postcssPresetEnv = require('postcss-preset-env')
@@ -71,4 +72,10 @@ module.exports = merge(common, {
     }),
   ],
   devtool: 'source-map',
+  devServer: {
+    static: {
+      directory: path.join(__dirname, 'files'),
+      publicPath: '/files',
+    },
+  },
 })

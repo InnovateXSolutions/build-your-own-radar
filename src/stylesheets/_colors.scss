@@ -1,49 +1,56 @@
-$green: #86b782;
-$blue: #1ebccd;
-$orange: #f38a3e;
-$violet: #b32059;
-$pink: #ee0b77;
+// Legacy color mappings (kept for compatibility)
+$green: #00CB54;   // Emerald Green
+$blue: #43ABDB;    // Bright Blue Sky
+$orange: #FF9202;  // Vibrant Orange
+$violet: #155079;  // Rich Teal Blue
+$pink: #FF5151;    // Coral Red
 
-$grey-darkest: #bababa;
+$grey-darkest: #B3BDC2;  // Soft Grey (Medium)
 $grey-dark: #cacaca;
 $grey: #dadada;
-$grey-light: #eee;
+$grey-light: #E8E8E8;    // Soft Grey (Light)
 $grey-lightest: #fafafa;
 $grey-even-darker: #d7d7d7;
 
 $white: #fff;
 $black: #000;
-$grey-text: rgb(51, 51, 51);
+$grey-text: #3A3A3A;     // Dark Charcoal Grey
 
 $grey-alpha-03: rgba(255, 255, 255, 0.3);
 
-// Brand colors for use across theme.
-$black: #000000; //onyx
-$white: #ffffff; //white
-$wave: #163c4d; //wave
-$wave-light: #6b8591; //wave-light
-$flamingo: #e16a7c; //flamingo
-$mist: #edf1f3; //mist (ededed)
-$sapphire: #47a1ad; //$sapphire
-$jade: #6b9e78; //jade
-$turmeric: #cc850a; //turmeric
-$amethyst: #634f7d; //amethyst
+// InnovateX Brand Colors
+$black: #000000;         // Solid Black - High contrast elements
+$white: #ffffff;         // White
+$wave: #0E2841;          // Deep Navy Blue - Primary brand colour
+$wave-light: #155079;    // Rich Teal Blue - Professional mid-tone
+$flamingo: #43ABDB;      // Bright Blue Sky - Energetic accent
+$mist: #E8E8E8;          // Soft Grey (Light) - Backgrounds, dividers
+
+// Quadrant colours (light - used for mobile buttons)
+$sapphire: #0E2841;      // Deep Navy Blue - Quadrant 1 (Techniques)
+$turmeric: #FF9202;      // Vibrant Orange - Quadrant 2 (Platforms)
+$jade: #00CB54;          // Emerald Green - Quadrant 3 (Tools)
+$amethyst: #43ABDB;      // Bright Blue Sky - Quadrant 4 (Languages & Frameworks)
 
 // Other colors
-$mist-s30: #71777d;
+$mist-s30: #B3BDC2;      // Soft Grey (Medium)
 $mist-s20: #d5d9db;
 $mist-s10: #e1e5e7;
 $mist-light: #f7fafc;
-$flamingo-s40: #bd4257;
+$flamingo-s40: #155079;  // Rich Teal Blue
 
-$button-normal: $wave; //button color
-$button-disabled: #909090; //disabled state for links and buttons
+$button-normal: $wave;   // Deep Navy Blue - button color
+$button-disabled: #B3BDC2; // Soft Grey (Medium) - disabled state
 
-$link-normal: $black; //links color
-$link-hover: #9b293c; //links hover state color
-$error-text: #d14234;
+$link-normal: $black;    // Solid Black - links color
+$link-hover: #43ABDB;    // Bright Blue Sky - links hover state
+$error-text: #FF5151;    // Coral Red - Error states
 
-$flamingo-dark: #9b293c; //flamingo-dark
-$sapphire-dark: #1f8290; //$sapphire-dark
-$jade-dark: #517b5c; //jade-dark
-$turmeric-dark: #a06908; //turmeric-dark
+// Quadrant colours (dark - used for blip circles on radar)
+$sapphire-dark: #0E2841; // Deep Navy Blue - Techniques blips
+$turmeric-dark: #cc7400; // Darker Orange - Platforms blips
+$jade-dark: #00994a;     // Darker Emerald - Tools blips
+$flamingo-dark: #155079; // Rich Teal Blue - Languages & Frameworks blips
+
+// Additional InnovateX colors
+$dark-azure: #041a2b;    // Dark Azure - Deep professional navy

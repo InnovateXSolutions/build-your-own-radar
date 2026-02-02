@@ -10,7 +10,7 @@
   }
 
   @page {
-    margin: 0;
+    margin: 15mm 0;
     size: A4;
   }
 
@@ -18,11 +18,14 @@
     margin: 0;
   }
 
+  @page backcover {
+    margin: 0;
+  }
+
   // ==========================================
   // PDF Cover Page - Full bleed matching template
   // ==========================================
   #pdf-cover-page {
-    page-break-after: always;
     width: 100vw;
     height: 100vh;
     margin: 0;
@@ -121,9 +124,7 @@
   // ==========================================
   .pdf-page {
     page-break-before: always;
-    page-break-after: always;
-    padding: 15mm;
-    min-height: calc(100vh - 30mm);
+    padding: 0 15mm 15mm 15mm;  // No top padding - @page margin handles it
   }
 
   .pdf-section-header {
@@ -306,39 +307,10 @@
   // Index Page - Radar at a Glance
   // ==========================================
   #pdf-index-page {
-    padding: 10mm 15mm;
+    padding: 0 15mm 10mm 15mm;  // No top padding - @page margin handles it
 
     .pdf-page-title {
       margin-bottom: 1rem;
-    }
-
-    .pdf-radar-snapshot {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-bottom: 1.5rem;
-      page-break-inside: avoid;
-      page-break-after: always;
-      min-height: 400px;
-
-      .pdf-radar-clone {
-        width: 100% !important;
-        max-width: 500px !important;
-        height: auto !important;
-
-        .quadrant-group {
-          opacity: 1 !important;
-          transform: none !important;
-        }
-
-        .blip-link {
-          opacity: 1 !important;
-        }
-
-        text {
-          fill: currentColor;
-        }
-      }
     }
 
     .pdf-index-content {
@@ -396,28 +368,10 @@
   }
 
   // ==========================================
-  // Radar Visualization Page
-  // ==========================================
-  #pdf-radar-page {
-    padding: 15mm;
-
-    .pdf-radar-visualization {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
-
-      svg {
-        max-width: 100%;
-        height: auto;
-      }
-    }
-  }
-
-  // ==========================================
-  // Back Cover - Full bleed
+  // Back Cover - Full bleed matching cover page
   // ==========================================
   #pdf-back-cover {
+    page: backcover;
     page-break-before: always;
     width: 100vw;
     height: 100vh;
@@ -428,18 +382,29 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    background-color: $wave;
     color: $white;
     position: relative;
+    overflow: hidden;
+
+    .pdf-back-cover-bg {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 0;
+    }
 
     .pdf-back-cover-content {
       max-width: 400px;
       padding: 2rem;
+      position: relative;
+      z-index: 10;
 
       .pdf-back-cover-logo {
         height: 80px;
         margin-bottom: 2rem;
-        filter: brightness(0) invert(1);
       }
 
       h2 {
@@ -495,7 +460,8 @@
       content: none;
     }
 
-    // Hide original radar-plot since we clone it into pdf-index-page
+    // Hide the radar-plot SVG in PDF - it doesn't render well
+    // The text index in pdf-index-page provides the same information
     #radar-plot {
       display: none !important;
     }
@@ -510,18 +476,24 @@
       page-break-before: always;
       max-height: initial !important;
       opacity: 1 !important;
-      position: static !important;
+      position: relative !important;
       margin-bottom: 20px;
-      padding: 15mm;
+      padding: 0 15mm 15mm 15mm;  // No top padding - @page margin handles it
 
       &__name {
-        font-size: 2rem;
+        font-size: 1.5rem;
         font-weight: bold;
         font-family: 'Bitter', serif;
-        margin-bottom: 1.5rem;
-        padding-bottom: 0.5rem;
-        border-bottom: 3px solid;
+        margin: 0 -15mm 1.5rem -15mm;  // Extend to edges
+        padding: 1rem 15mm;
         display: block !important;
+        color: $white !important;
+        border-bottom: none;
+      }
+
+      // Repeated header for each ring section (hidden on screen, shown in print)
+      &__ring-header {
+        display: none;  // Hide for now - browser print doesn't support repeating headers well
       }
 
       &__ring-name {
@@ -532,23 +504,19 @@
       }
 
       &.first .quadrant-table__name {
-        color: $sapphire;
-        border-color: $sapphire;
+        background-color: $sapphire;
       }
 
       &.second .quadrant-table__name {
-        color: $turmeric;
-        border-color: $turmeric;
+        background-color: $turmeric;
       }
 
       &.third .quadrant-table__name {
-        color: $jade;
-        border-color: $jade;
+        background-color: $jade;
       }
 
       &.fourth .quadrant-table__name {
-        color: $flamingo;
-        border-color: $flamingo;
+        background-color: $flamingo;
       }
 
       .blip-list__item {
@@ -645,7 +613,6 @@
   #pdf-how-to-use-page,
   #pdf-themes-page,
   #pdf-index-page,
-  #pdf-radar-page,
   #pdf-back-cover,
   .pdf-page-footer {
     display: none !important;

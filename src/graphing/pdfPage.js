@@ -27,48 +27,7 @@ const addQuadrantNameInPdfView = (order, quadrantName) => {
     .text(quadrantName)
 }
 
-const cloneRadarForPdf = () => {
-  const radarPlot = document.querySelector('#radar-plot')
-  const pdfRadarContainer = document.querySelector('#pdf-index-page .pdf-radar-snapshot')
-
-  if (radarPlot && pdfRadarContainer) {
-    // Clone the radar SVG
-    const radarClone = radarPlot.cloneNode(true)
-    radarClone.removeAttribute('id')
-    radarClone.setAttribute('class', 'pdf-radar-clone')
-
-    // Reset all quadrant transforms to show full radar
-    const quadrantGroups = radarClone.querySelectorAll('.quadrant-group')
-    quadrantGroups.forEach(group => {
-      group.style.opacity = '1'
-      group.style.transform = ''
-      group.removeAttribute('transform')
-      // Remove any inline style transforms
-      group.style.cssText = 'opacity: 1 !important;'
-    })
-
-    // Make all blips visible
-    const blipLinks = radarClone.querySelectorAll('.blip-link')
-    blipLinks.forEach(blip => {
-      blip.style.opacity = '1'
-    })
-
-    // Ensure SVG has proper dimensions for print
-    const width = radarClone.getAttribute('width') || radarClone.viewBox?.baseVal?.width || 800
-    const height = radarClone.getAttribute('height') || radarClone.viewBox?.baseVal?.height || 800
-    radarClone.style.width = '100%'
-    radarClone.style.height = 'auto'
-    radarClone.style.maxWidth = '500px'
-
-    pdfRadarContainer.innerHTML = ''
-    pdfRadarContainer.appendChild(radarClone)
-  }
-}
-
 const generatePdfIndexPage = () => {
-  // First clone the radar visualization
-  cloneRadarForPdf()
-
   const indexContainer = d3.select('#pdf-index-page .pdf-index-content')
   indexContainer.html('')
 

@@ -247,27 +247,19 @@
         }
       }
 
-      .pdf-quadrant-list li {
-        strong {
-          display: inline-block;
-          min-width: 160px;
-        }
-      }
-
-      .pdf-ring-list li {
-        strong {
-          display: inline-block;
-          min-width: 70px;
-          color: $flamingo;
-        }
-      }
-
+      .pdf-quadrant-list li,
+      .pdf-ring-list li,
       .pdf-status-list li {
+        display: block;
+
         strong {
-          display: inline-block;
-          min-width: 90px;
           color: $flamingo;
+          margin-right: 0.5rem;
         }
+      }
+
+      .pdf-quadrant-list li strong {
+        color: $wave;
       }
     }
   }

@@ -40,24 +40,50 @@
       z-index: 0;
     }
 
-    .pdf-cover-logo {
+    // Header with logo on left, date on right
+    .pdf-cover-header {
       position: absolute;
-      top: 8%;
-      left: 0;
-      right: 0;
-      text-align: center;
+      top: 5%;
+      left: 8%;
+      right: 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       z-index: 1;
+    }
 
+    .pdf-cover-logo {
       img {
-        height: 100px;
+        height: 70px;
         width: auto;
-        filter: brightness(0) invert(1);
+        // Don't invert - use natural logo colors
       }
     }
 
+    .pdf-cover-date-container {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+
+      .pdf-cover-date-line {
+        width: 80px;
+        height: 2px;
+        background-color: $flamingo;
+      }
+
+      .pdf-date {
+        font-family: 'Inter', sans-serif;
+        font-size: 1rem;
+        font-weight: 600;
+        color: $flamingo;
+        white-space: nowrap;
+      }
+    }
+
+    // Main content centered
     .pdf-cover-content {
       position: absolute;
-      top: 38%;
+      top: 42%;
       left: 0;
       right: 0;
       text-align: center;
@@ -75,23 +101,10 @@
     .pdf-subtitle {
       font-family: 'Inter', sans-serif;
       font-size: 1.25rem;
-      font-weight: 600;
+      font-weight: 700;
       color: $white;
       text-transform: uppercase;
       letter-spacing: 0.3em;
-      margin: 0;
-    }
-
-    .pdf-date {
-      position: absolute;
-      bottom: 5%;
-      left: 0;
-      right: 0;
-      font-family: 'Inter', sans-serif;
-      font-size: 1rem;
-      color: $flamingo;
-      text-align: center;
-      z-index: 1;
       margin: 0;
     }
   }

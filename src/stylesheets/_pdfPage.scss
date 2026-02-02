@@ -46,32 +46,36 @@
       top: 5%;
       left: 8%;
       right: 8%;
-      display: flex;
+      display: flex !important;
       justify-content: space-between;
       align-items: center;
-      z-index: 1;
+      z-index: 10;
     }
 
     .pdf-cover-logo {
+      display: block !important;
+
       img {
+        display: block !important;
         height: 70px;
         width: auto;
-        // Don't invert - use natural logo colors
       }
     }
 
     .pdf-cover-date-container {
-      display: flex;
+      display: flex !important;
       align-items: center;
       gap: 1rem;
 
       .pdf-cover-date-line {
+        display: block !important;
         width: 80px;
         height: 2px;
         background-color: $flamingo;
       }
 
       .pdf-date {
+        display: block !important;
         font-family: 'Inter', sans-serif;
         font-size: 1rem;
         font-weight: 600;
@@ -87,10 +91,12 @@
       left: 0;
       right: 0;
       text-align: center;
-      z-index: 1;
+      z-index: 10;
+      display: block !important;
     }
 
     .pdf-title {
+      display: block !important;
       font-family: 'Bitter', serif;
       font-size: 3.5rem;
       font-weight: bold;
@@ -99,6 +105,7 @@
     }
 
     .pdf-subtitle {
+      display: block !important;
       font-family: 'Inter', sans-serif;
       font-size: 1.25rem;
       font-weight: 700;

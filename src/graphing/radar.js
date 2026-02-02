@@ -22,7 +22,7 @@ const {
   removeScrollListener,
 } = require('./components/quadrants')
 const { renderQuadrantTables } = require('./components/quadrantTables')
-const { addQuadrantNameInPdfView, addRadarLinkInPdfView } = require('./pdfPage')
+const { addQuadrantNameInPdfView, addRadarLinkInPdfView, generatePdfIndexPage } = require('./pdfPage')
 
 const { constructSheetUrl } = require('../util/urlUtils')
 const { toRadian } = require('../util/mathUtils')
@@ -831,6 +831,8 @@ const Radar = function (size, radar) {
       renderRadarLegends(radarElement, hasMovementData(quadrants))
       hideTooltipOnScroll(tip)
       addRadarLinkInPdfView()
+      // Generate PDF index page after all quadrants are rendered
+      setTimeout(() => generatePdfIndexPage(), 100)
     }
   }
 
